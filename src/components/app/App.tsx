@@ -15,20 +15,26 @@ const App = () => {
 
   const handleOpen = () => {
     const service = new ApodService();
-    if (!endDate && !startDate) alert("Please enter valid data");
+    if ((!endDate && !startDate) || !startDate) alert("Please enter valid data");
     if (endDate && startDate) {
       service.getImageByRange(startDate, endDate)
       .then((items) => {
         setItems(items);
         setOpen(true);
-      });
+      })
+      .catch(() => {
+        alert("Some error...")
+      })
     } 
     else if (startDate){
       service.getImageByDate(startDate)
       .then((item) => {
         setItems(item);
         setOpen(true);
-      });
+      })
+      .catch(() => {
+        alert("Some error...")
+      })
     }
   }
 

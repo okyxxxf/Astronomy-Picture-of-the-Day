@@ -27,10 +27,11 @@ const Header = ({handleOpen, startDate, endDate, setStartDate, setEndDate} : hea
     <Box component={"header"} sx={{height: "150px", boxShadow: "2px 0 5px 1px black"}}>
       <Box sx={headerWrapperStyles}>
         <Typography variant="h3" component="h1">APOD</Typography>
-        <Box sx={{display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center"}}>
+        <Box sx={{display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center", position: "relative"}}>
           <DatePicker value={startDate} onChange={(value) => setStartDate(value)} label="Select start date" />
           <DatePicker value={endDate} onChange={(value) => setEndDate(value)} label="Select end date" />
           <Button variant="contained" onClick={() => handleOpen()}>Get picture</Button>
+          <Typography sx={{position: "absolute", left: 0, top: -40, color: "gray"}}>To get one photo just leave second input empty</Typography>
         </Box>
       </Box>
     </Box>
