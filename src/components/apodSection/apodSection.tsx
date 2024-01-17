@@ -23,7 +23,8 @@ const ApodSection = () => {
     .catch(() => {
       setError(true);
       setLoading(false);
-    })
+    });
+
   }
 
   useEffect(() => {

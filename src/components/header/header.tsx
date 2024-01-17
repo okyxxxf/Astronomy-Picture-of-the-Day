@@ -14,15 +14,23 @@ const headerWrapperStyles = {
   padding: "0 10px"
 }
 
-const Header = () => {
+interface headerProps {
+  handleOpen : Function,
+  startDate : Date | null,
+  endDate : Date | null,
+  setStartDate : Function,
+  setEndDate : Function,
+}
+
+const Header = ({handleOpen, startDate, endDate, setStartDate, setEndDate} : headerProps) => {
   return (
     <Box component={"header"} sx={{height: "150px", boxShadow: "2px 0 5px 1px black"}}>
       <Box sx={headerWrapperStyles}>
         <Typography variant="h3" component="h1">APOD</Typography>
         <Box sx={{display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center"}}>
-          <DatePicker label="Select start date" />
-          <DatePicker label="Select end date" />
-          <Button variant="contained">Get picture</Button>
+          <DatePicker value={startDate} onChange={(value) => setStartDate(value)} label="Select start date" />
+          <DatePicker value={endDate} onChange={(value) => setEndDate(value)} label="Select end date" />
+          <Button variant="contained" onClick={() => handleOpen()}>Get picture</Button>
         </Box>
       </Box>
     </Box>
