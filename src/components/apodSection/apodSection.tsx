@@ -13,9 +13,9 @@ const ApodSection = () => {
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isError, setError] = useState<boolean>(false);
 
-  const getImage = (date : Date) => {
+  const getImage = () => {
     const service = new ApodService();
-    service.getImageByDate(date)
+    service.getToDayImage()
     .then((res) => {
       setUrl(res.url);
       setLoading(false);
@@ -28,7 +28,7 @@ const ApodSection = () => {
   }
 
   useEffect(() => {
-    getImage(new Date());
+    getImage();
   }, []);
 
   if (isError) return (
